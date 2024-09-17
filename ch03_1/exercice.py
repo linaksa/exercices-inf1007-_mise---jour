@@ -5,31 +5,51 @@ import math
 
 
 def square_root(a: float) -> float:
-    return 0.0
+   a = a ** (1/2)
+   #corrigé: return math.sqrt(a)
+   return a
 
 
 def square(a: float) -> float:
-    return 0.0
+    return a**2
 
 
 def average(a: float, b: float, c: float) -> float:
-    return 0.0
+    #ça dit que a, b, c sont des float et que la réponse est float
+    return (a + b + c)/3
+# en s'en fou de type de a b et c, mais le diviser par trois le rend en float
+# test: va avoir la bonne reponse et ce que notre programme donne
+#pas obligé faire test, donc regarder corrigé ou essayer de le rouler
 
 
 def to_radians(angle_degs: float, angle_mins: float, angle_secs: float) -> float:
-    return 0.0
+    return math.radians(angle_degs + (angle_mins + (angle_secs / 60)) / 60)
+#1 degré = 60 minutes angulaires (1° = 60')
+#1 minute angulaire = 60 secondes angulaires (1' = 60'')
+#Pas les minutes de l'Horloge! c'est anglualire.
 
+#Convertir en degrés, minutes, secondes un angle fourni au départ en radians
+def to_degrees(angle_rads: float) -> tuple:#s'attend a ce qu'on retourne un tuple mais qu'on rentre un float.mais python ne force pas que ce soit un float
+    degrees_angle = math.degrees(angle_rads) #math.degrees(x): Convertit l'angle x de radians en degrés.
+    minutes_angle = (angle_rad*10 800)/math.pi
+    seconds_angle = minute_angle/60
+    return degrees_angle, minutes_angle, seconds_angle
+#corrigé:
+#    degrees = math.degrees(angle_rads)
+    # min = (abs(degrees) - int(abs(degrees))) * 60
+    # sec = (min - int(min)) * 60
+    #return int(degrees), int(min), sec
 
-def to_degrees(angle_rads: float) -> tuple:
-    return 0.0, 0.0, 0.0
-
-
+#Convertir en degrés Celsius une température exprimée au départ en degrés Fahrenheit et vice-versa
 def to_celsius(temperature: float) -> float:
-    return 0.0
+    fahrenheit = (temperature * (9/5)) + 32
+    return fahrenheit
 
 
 def to_farenheit(temperature: float) -> float:
-    return 0.0
+    celsius = (temperature -32) * (5/9)
+    return celsius
+#le prof a dit que mieux est de retourner une variable
 
 
 def main() -> None:
